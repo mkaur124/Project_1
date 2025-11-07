@@ -110,6 +110,8 @@ GEM
     erubi (1.13.1)
     et-orbi (1.4.0)
       tzinfo
+    faker (3.5.2)
+      i18n (>= 1.8.11, < 2)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
@@ -141,6 +143,18 @@ GEM
       sshkit (>= 1.23.0, < 2.0)
       thor (~> 1.3)
       zeitwerk (>= 2.6.18, < 3.0)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
@@ -378,9 +392,11 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  faker (~> 3.0)
   importmap-rails
   jbuilder
   kamal
+  kaminari
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.4)
@@ -389,7 +405,7 @@ DEPENDENCIES
   solid_cable
   solid_cache
   solid_queue
-  sqlite3
+  sqlite3 (>= 2.1)
   stimulus-rails
   thruster
   turbo-rails

@@ -2,6 +2,7 @@
 
 <%= form_with url: schools_path, method: :get, local: true do %>
   <%= text_field_tag :q, params[:q], placeholder: "Search name or city" %>
+  <%= select_tag :per_page, options_for_select([10,20,50], params[:per_page] || 20), onchange: 'this.form.submit();' %>
   <%= submit_tag "Search" %>
 <% end %>
 

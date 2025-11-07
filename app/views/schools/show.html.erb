@@ -1,12 +1,33 @@
 <h1><%= @school.name %></h1>
-<p><strong>Address:</strong> <%= @school.address %></p>
-<p><strong>City:</strong> <%= @school.city %></p>
-<p><strong>Principal:</strong> <%= @school.principal_name %></p>
-<p><strong>Founded:</strong> <%= @school.founded_year %></p>
+<p>
+  <strong>Address:</strong> <%= @school.address %><br>
+  <strong>City:</strong> <%= @school.city %><br>
+  <strong>Principal:</strong> <%= @school.principal_name %><br>
+  <strong>Founded:</strong> <%= @school.founded_year %>
+</p>
 
 <h2>Teachers</h2>
 <ul>
   <% @teachers.each do |teacher| %>
-    <li><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher) %> — <%= teacher.subject %></li>
+    <li>
+      <%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher) %>
+      <% if teacher.subject.present? %>
+        — <%= teacher.subject %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
+
+<h2>Students</h2>
+<ul>
+  <% @students.each do |student| %>
+    <li>
+      <%= link_to "#{student.first_name} #{student.last_name}", student_path(student) %>
+      <% if student.grade_level.present? %>
+        — Grade <%= student.grade_level %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to Schools", schools_path %>

@@ -1,10 +1,20 @@
 <h1><%= @teacher.first_name %> <%= @teacher.last_name %></h1>
-<p><strong>Subject:</strong> <%= @teacher.subject %></p>
-<p><strong>School:</strong> <%= link_to @teacher.school.name, school_path(@teacher.school) %></p>
+<p>
+  <strong>Subject:</strong> <%= @teacher.subject %><br>
+  <strong>Email:</strong> <%= @teacher.email %><br>
+  <strong>School:</strong> <%= link_to @teacher.school.name, school_path(@teacher.school) %>
+</p>
 
 <h2>Students</h2>
 <ul>
   <% @students.each do |student| %>
-    <li><%= link_to "#{student.first_name} #{student.last_name}", student_path(student) %> — Grade <%= student.grade_level %></li>
+    <li>
+      <%= link_to "#{student.first_name} #{student.last_name}", student_path(student) %>
+      <% if student.grade_level.present? %>
+        — Grade <%= student.grade_level %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
+
+<%= link_to "Back to Teachers", teachers_path %>

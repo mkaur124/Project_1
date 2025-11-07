@@ -1,0 +1,3 @@
+<h1><%= @student.first_name %> <%= @student.last_name %></h1>
+<p><strong>Grade:</strong> <%= @student.grade_level %></p>
+<p><strong>Teacher:</strong> <%= link_to "#{@student.teacher.first_name} #{@student.teacher.last_name}", teacher_path(@student.teacher) %></p>

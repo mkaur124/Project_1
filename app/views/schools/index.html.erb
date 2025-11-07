@@ -1,0 +1,17 @@
+<h1>Schools</h1>
+
+<%= form_with url: schools_path, method: :get, local: true do %>
+  <%= text_field_tag :q, params[:q], placeholder: "Search name or city" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<ul>
+  <% @schools.each do |school| %>
+    <li>
+      <%= link_to school.name, school_path(school) %>
+      — <%= school.city %>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @schools %>

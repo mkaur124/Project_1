@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get "pages/about"
+  # Set the home page (you can change later)
+  root "schools#index"
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # RESTful routes for schools, teachers, and students
+  resources :schools do
+    resources :teachers, only: [:index, :show]
+  end
+
+  resources :teachers do
+    resources :students, only: [:index, :show]
+  end
+
+  resources :students, only: [:index, :show]
+
+  # Health check (keep it)
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end
